@@ -1,0 +1,5 @@
+D:\Projects\Repos\PasswordGenerator\PasswordGeneratorDLL\bin\Debug\PasswordGeneratorDLL.dll
+D:\Projects\Repos\PasswordGenerator\PasswordGeneratorDLL\bin\Debug\PasswordGeneratorDLL.pdb
+D:\Projects\Repos\PasswordGenerator\PasswordGeneratorDLL\obj\Debug\Generator.csprojResolveAssemblyReference.cache
+D:\Projects\Repos\PasswordGenerator\PasswordGeneratorDLL\obj\Debug\PasswordGeneratorDLL.dll
+D:\Projects\Repos\PasswordGenerator\PasswordGeneratorDLL\obj\Debug\PasswordGeneratorDLL.pdb

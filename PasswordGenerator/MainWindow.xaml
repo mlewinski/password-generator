@@ -1,0 +1,157 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="PasswordGenerator.MainWindow"
+    Title="Password Generator" Height="541" Width="700" ResizeMode="CanMinimize" KeyUp="Window_KeyUp">
+    <Grid Margin="0,0,2,1">
+        <Menu Height="21" VerticalAlignment="Top" IsMainMenu="True">
+            <MenuItem Header="File">
+                <MenuItem Header="Close..." Click="MenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="Generator">
+                <MenuItem Header="Generate" Click="MenuItem_Click_1" />
+            </MenuItem>
+        </Menu>
+        <StackPanel Margin="0,26,0,0" MaxHeight="392" Height="447" VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Width="200">
+            <Expander Header="Acceptable Characters">
+                <StackPanel>
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <RadioButton Content="From preset" x:Name="OptionPresetCharacters"
+                                         GroupName="AcceptableCharacters" />
+                        </GroupBox.Header>
+                        <StackPanel IsEnabled="{Binding ElementName=OptionPresetCharacters, Path=IsChecked}">
+                            <CheckBox Margin="0,10,0,0" Content="Numeric" Name="cbNumeric" Checked="CheckBox_Checked">
+                                <CheckBox.ToolTip>
+                                    <StackPanel Background="AliceBlue">
+                                        <Label Background="Green" Foreground="White">Help</Label>
+                                        <Label>Use digits in password (used in ex. PIN)</Label>
+                                    </StackPanel>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="0,10,0,0" Content="Alphabetic" Name="cbAlphabetic"
+                                      Checked="CheckBox_Checked">
+                                <CheckBox.ToolTip>
+                                    <StackPanel Background="AliceBlue">
+                                        <Label Background="Green" Foreground="White">Help</Label>
+                                        <Label>Use letters (lower case)</Label>
+                                    </StackPanel>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="0,10,0,0" Content="Capital alphabetic" Name="cbCapital"
+                                      Checked="CheckBox_Checked">
+                                <CheckBox.ToolTip>
+                                    <StackPanel Background="AliceBlue">
+                                        <Label Background="Green" Foreground="White">Help</Label>
+                                        <Label>Use letters (upper case)</Label>
+                                    </StackPanel>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                            <CheckBox Margin="0,10,0,0" Content="Special" Name="cbSpecial" Checked="CheckBox_Checked">
+                                <CheckBox.ToolTip>
+                                    <StackPanel Background="AliceBlue">
+                                        <Label Background="Green" Foreground="White">Help</Label>
+                                        <Label>Use special characters !@#$%^ etc.</Label>
+                                    </StackPanel>
+                                </CheckBox.ToolTip>
+                            </CheckBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox>
+                        <GroupBox.Header>
+                            <RadioButton Content="Custom" x:Name="OptionCustomCharacters"
+                                         GroupName="AcceptableCharacters" />
+                        </GroupBox.Header>
+                        <StackPanel IsEnabled="{Binding ElementName=OptionCustomCharacters, Path=IsChecked}">
+                            <Label>Enter characters :</Label>
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" Height="107">
+                                <TextBox.ToolTip>
+                                    <StackPanel Background="AliceBlue">
+                                        <Label Background="DarkBlue" Foreground="White">Information</Label>
+                                        <Label>Non-distinct characters have increased probability to appear in password</Label>
+                                    </StackPanel>
+                                </TextBox.ToolTip>
+                            </TextBox>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </Expander>
+            <WrapPanel>
+                <Label Content="Minimal length:" />
+                <TextBox Width="102" Name="txtMin" TextChanged="TextBox_TextChanged">
+                    <TextBox.ToolTip>
+                        <StackPanel Background="AliceBlue">
+                            <Label Background="Green" Foreground="White">Help</Label>
+                            <Label>Enter minimal length of desired password</Label>
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+            </WrapPanel>
+            <WrapPanel Margin="0,5,0,0">
+                <Label Content="Maximal length:" />
+                <TextBox Name="txtMax" Width="100" TextChanged="txtMax_TextChanged">
+                    <TextBox.ToolTip>
+                        <StackPanel Background="AliceBlue">
+                            <Label Background="Green" Foreground="White">Help</Label>
+                            <Label>Enter maximal length of desired password</Label>
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+            </WrapPanel>
+            <WrapPanel Margin="0,5,0,0">
+                <Label Content="Amount :" />
+                <TextBox Name="txtCount" Width="135">
+                    <TextBox.ToolTip>
+                        <StackPanel Background="AliceBlue">
+                            <Label Background="Green" Foreground="White">Help</Label>
+                            <Label>Enter amount of passwords to generate</Label>
+                        </StackPanel>
+                    </TextBox.ToolTip>
+                </TextBox>
+            </WrapPanel>
+            <Label Content="Press F5 to generate" Foreground="Red" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="447" Margin="205,26,0,0" VerticalAlignment="Top" Width="477">
+            <Expander Header="Statistic data" Height="194">
+                <StackPanel>
+                    <WrapPanel>
+                        <Label Content="Amount of possible passwords :" />
+                        <Label x:Name="lblAmount" Width="292" Height="67"
+                               ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Content="Minimal length in bits :" />
+                        <Label x:Name="lblMinLength" Width="342" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Content="Maximal length in bits :" />
+                        <Label x:Name="lblMaxLength" Width="340" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Content="Number of bits generated :" />
+                        <Label x:Name="lblBitsGenerated" Width="319" Height="24" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label Content="Time elapsed :" />
+                        <Label x:Name="lblTimeElapsed" Width="388" Height="24" />
+                    </WrapPanel>
+                    <WrapPanel />
+                </StackPanel>
+            </Expander>
+            <WrapPanel>
+                <Label Content="Generated passwords :" />
+                <ListBox x:Name="PasswordList" Height="215" Width="341" />
+            </WrapPanel>
+            <WrapPanel>
+                <Button Name="btnSave" Content="Save to file" Width="132" Click="btnSave_Click" />
+            </WrapPanel>
+        </StackPanel>
+        <StatusBar HorizontalAlignment="Left" Width="692" Height="33" VerticalAlignment="Bottom">
+            <WrapPanel>
+                <Label Content="Progress : " FontSize="8" />
+                <ProgressBar Name="Progress" Width="633" />
+            </WrapPanel>
+        </StatusBar>
+    </Grid>
+</Window>
