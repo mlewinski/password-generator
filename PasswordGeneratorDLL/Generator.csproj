@@ -7,8 +7,8 @@
     <ProjectGuid>{B4B0048B-D8C9-40A1-8CA8-11454E64BE2E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeneratorDLL</RootNamespace>
-    <AssemblyName>PasswordGeneratorDLL</AssemblyName>
+    <RootNamespace>Generator</RootNamespace>
+    <AssemblyName>Generator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
